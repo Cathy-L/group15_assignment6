@@ -13,6 +13,7 @@
 		4CC936F42178D2C00017BC07 /* group15_assignment6.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4CC936F22178D2C00017BC07 /* group15_assignment6.xcdatamodeld */; };
 		4CC936F62178D2C00017BC07 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CC936F52178D2C00017BC07 /* Assets.xcassets */; };
 		4CC936F92178D2C00017BC07 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CC936F72178D2C00017BC07 /* LaunchScreen.storyboard */; };
+		4CC937012178D46D0017BC07 /* AdventurerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC937002178D46D0017BC07 /* AdventurerTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		4CC936F52178D2C00017BC07 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4CC936F82178D2C00017BC07 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4CC936FA2178D2C00017BC07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4CC937002178D46D0017BC07 /* AdventurerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdventurerTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				4CC936EB2178D2C00017BC07 /* AppDelegate.swift */,
 				4CC936ED2178D2C00017BC07 /* ViewController.swift */,
 				4CC936EF2178D2C00017BC07 /* Main.storyboard */,
+				4CC937002178D46D0017BC07 /* AdventurerTableViewCell.swift */,
 				4CC936F52178D2C00017BC07 /* Assets.xcassets */,
 				4CC936F72178D2C00017BC07 /* LaunchScreen.storyboard */,
 				4CC936FA2178D2C00017BC07 /* Info.plist */,
@@ -141,6 +144,7 @@
 				4CC936F42178D2C00017BC07 /* group15_assignment6.xcdatamodeld in Sources */,
 				4CC936EE2178D2C00017BC07 /* ViewController.swift in Sources */,
 				4CC936EC2178D2C00017BC07 /* AppDelegate.swift in Sources */,
+				4CC937012178D46D0017BC07 /* AdventurerTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,11 +10,20 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        title = "Adventurers"
+        tableView.register(AdventurerTableViewCell.self,
+                           forCellReuseIdentifier: "AdventurerTableViewCell")
+        
     }
 
+    @IBAction func addMember(_ sender: UIBarButtonItem) {
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
