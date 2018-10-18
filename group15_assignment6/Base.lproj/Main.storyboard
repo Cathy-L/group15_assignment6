@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -36,13 +37,77 @@
                                                         <constraint firstAttribute="width" constant="135" id="tyE-JW-2wn"/>
                                                     </constraints>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ls2-gX-2yT">
+                                                    <rect key="frame" x="150" y="16" width="57" height="27"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profession" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QaT-bv-oGs">
+                                                    <rect key="frame" x="160" y="51" width="81" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Attack:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SHq-La-e8j">
+                                                    <rect key="frame" x="160" y="77" width="54" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HP:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GSH-Gf-4jv">
+                                                    <rect key="frame" x="160" y="103" width="28" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lvl" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W22-DH-8tk">
+                                                    <rect key="frame" x="333" y="16" width="27" height="27"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ATK" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8bp-zj-Dfg">
+                                                    <rect key="frame" x="329" y="77" width="31" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gGq-d6-gaZ">
+                                                    <rect key="frame" x="337" y="103" width="23" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="B72-UZ-MlB" firstAttribute="top" secondItem="CG5-hv-wPU" secondAttribute="top" id="1Zq-3S-UwO"/>
+                                                <constraint firstItem="8bp-zj-Dfg" firstAttribute="trailing" secondItem="W22-DH-8tk" secondAttribute="trailing" id="4P7-Bd-S4A"/>
+                                                <constraint firstItem="gGq-d6-gaZ" firstAttribute="centerY" secondItem="GSH-Gf-4jv" secondAttribute="centerY" id="4X2-Qc-tUP"/>
+                                                <constraint firstItem="SHq-La-e8j" firstAttribute="leading" secondItem="QaT-bv-oGs" secondAttribute="leading" id="5yN-UN-yS4"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="GSH-Gf-4jv" secondAttribute="bottom" id="6mY-if-GWT"/>
+                                                <constraint firstItem="Ls2-gX-2yT" firstAttribute="top" secondItem="CG5-hv-wPU" secondAttribute="topMargin" constant="5" id="9Vb-Ez-tam"/>
+                                                <constraint firstItem="Ls2-gX-2yT" firstAttribute="leading" secondItem="B72-UZ-MlB" secondAttribute="trailing" constant="15" id="A6w-PH-DZ2"/>
+                                                <constraint firstItem="GSH-Gf-4jv" firstAttribute="leading" secondItem="QaT-bv-oGs" secondAttribute="leading" id="B5H-zO-Jbj"/>
+                                                <constraint firstItem="SHq-La-e8j" firstAttribute="top" secondItem="QaT-bv-oGs" secondAttribute="bottom" constant="5" id="E4c-We-g23"/>
+                                                <constraint firstItem="gGq-d6-gaZ" firstAttribute="trailing" secondItem="W22-DH-8tk" secondAttribute="trailing" id="Oqb-H5-B95"/>
+                                                <constraint firstItem="W22-DH-8tk" firstAttribute="centerY" secondItem="Ls2-gX-2yT" secondAttribute="centerY" id="VUw-v1-rah"/>
+                                                <constraint firstItem="GSH-Gf-4jv" firstAttribute="top" secondItem="SHq-La-e8j" secondAttribute="bottom" constant="5" id="X60-Jj-KFl"/>
+                                                <constraint firstItem="QaT-bv-oGs" firstAttribute="leading" secondItem="B72-UZ-MlB" secondAttribute="trailing" constant="25" id="bAP-zm-QHa"/>
                                                 <constraint firstItem="B72-UZ-MlB" firstAttribute="leading" secondItem="CG5-hv-wPU" secondAttribute="leading" id="dci-tI-COO"/>
                                                 <constraint firstAttribute="bottom" secondItem="B72-UZ-MlB" secondAttribute="bottom" constant="-0.5" id="ezV-SS-OD0"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="W22-DH-8tk" secondAttribute="trailing" id="fcY-zi-gqy"/>
+                                                <constraint firstItem="8bp-zj-Dfg" firstAttribute="centerY" secondItem="SHq-La-e8j" secondAttribute="centerY" id="pym-EG-Mei"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="adventurerImage" destination="B72-UZ-MlB" id="fdi-4d-cco"/>
+                                            <outlet property="attack" destination="8bp-zj-Dfg" id="evU-h0-m5L"/>
+                                            <outlet property="hp" destination="gGq-d6-gaZ" id="pU0-ai-Yot"/>
+                                            <outlet property="level" destination="W22-DH-8tk" id="RJ3-Mq-K8n"/>
+                                            <outlet property="name" destination="Ls2-gX-2yT" id="Z6D-VX-nvi"/>
+                                            <outlet property="profession" destination="QaT-bv-oGs" id="WJ5-Hz-ToL"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>

@@ -10,6 +10,14 @@ import UIKit
 
 class AdventurerTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var adventurerImage: UIImageView!
+    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var level: UILabel!
+    @IBOutlet weak var profession: UILabel!
+    @IBOutlet weak var attack: UILabel!
+    @IBOutlet weak var hp: UILabel!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
