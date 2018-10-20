@@ -24,7 +24,7 @@
                                 <rect key="frame" x="0.0" y="116" width="375" height="551"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AdventurerTableViewCell" rowHeight="135" id="8pA-o1-PPv" customClass="AdventurerTableViewCell" customModule="group15_assignment6" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AdventurerTableViewCell" rowHeight="135" id="8pA-o1-PPv" customClass="AdventurerTableViewCell" customModule="group15_assignment6" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="135"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8pA-o1-PPv" id="CG5-hv-wPU">
@@ -257,10 +257,10 @@
             </objects>
             <point key="canvasLocation" x="2040.8" y="133.5832083958021"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Adventurer View Controller-->
         <scene sceneID="Dti-nm-68T">
             <objects>
-                <viewController id="SzE-z1-8Zc" sceneMemberID="viewController">
+                <viewController id="SzE-z1-8Zc" customClass="AddAdventurerViewController" customModule="group15_assignment6" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2aG-Rw-Nxx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -310,15 +310,32 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Ekt-Mo-4Ge">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="collectionViewCell" id="Ekt-Mo-4Ge" customClass="CollectionViewCell" customModule="group15_assignment6" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="10" width="130" height="130"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iCp-XE-Scn">
+                                                    <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
+                                                </imageView>
+                                            </subviews>
                                         </view>
+                                        <constraints>
+                                            <constraint firstItem="iCp-XE-Scn" firstAttribute="leading" secondItem="Ekt-Mo-4Ge" secondAttribute="leading" id="N4t-XY-mpe"/>
+                                            <constraint firstItem="iCp-XE-Scn" firstAttribute="top" secondItem="Ekt-Mo-4Ge" secondAttribute="top" id="Px6-SG-aKy"/>
+                                            <constraint firstAttribute="bottom" secondItem="iCp-XE-Scn" secondAttribute="bottom" id="ooa-bm-3hf"/>
+                                            <constraint firstAttribute="trailing" secondItem="iCp-XE-Scn" secondAttribute="trailing" id="qmL-Wp-Z1I"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="image" destination="iCp-XE-Scn" id="Ifb-CX-UQ5"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="SzE-z1-8Zc" id="4vi-30-5jJ"/>
+                                </connections>
                             </collectionView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Class" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="L2T-Nt-Jn4">
                                 <rect key="frame" x="110" y="172" width="215" height="30"/>
@@ -367,6 +384,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="srE-7d-jlI"/>
                     </view>
+                    <connections>
+                        <outlet property="collectionView" destination="dVx-HF-4ki" id="0Sh-c5-7qQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YsI-01-wBq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
