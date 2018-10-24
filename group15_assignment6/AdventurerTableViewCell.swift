@@ -16,7 +16,8 @@ class AdventurerTableViewCell: UITableViewCell {
     @IBOutlet weak var profession: UILabel!
     @IBOutlet weak var attack: UILabel!
     @IBOutlet weak var hp: UILabel!
-    
+    @IBOutlet weak var defense: UILabel!
+    @IBOutlet weak var speed: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

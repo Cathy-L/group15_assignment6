@@ -8,7 +8,7 @@
 
 import UIKit
 
-var images: [UIImage] = [UIImage(named: "test")!, UIImage(named: "test2")!, UIImage(named: "test3")!]
+var images: [UIImage] = [UIImage(named: "man1")!, UIImage(named: "man2")!, UIImage(named: "man3")!, UIImage(named: "woman1")!, UIImage(named: "woman2")!, UIImage(named: "woman3")!]
 
 class AddAdventurerViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
