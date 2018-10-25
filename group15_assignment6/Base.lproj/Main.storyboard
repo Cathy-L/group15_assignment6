@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zfq-Bw-0GM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zfq-Bw-0GM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -176,10 +174,10 @@
             </objects>
             <point key="canvasLocation" x="1076" y="132.68365817091455"/>
         </scene>
-        <!--View Controller-->
+        <!--Quest View Controller-->
         <scene sceneID="tlO-7N-0Nl">
             <objects>
-                <viewController id="I5e-Js-bQS" sceneMemberID="viewController">
+                <viewController id="I5e-Js-bQS" customClass="QuestViewController" customModule="group15_assignment6" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TgY-Ib-Vk7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -286,6 +284,15 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="KE9-7W-8WY"/>
                     </view>
+                    <connections>
+                        <outlet property="attackLabel" destination="nbx-Dx-DRg" id="4If-zw-zWI"/>
+                        <outlet property="hpLabel" destination="XvH-0W-EFO" id="2PM-3c-n6m"/>
+                        <outlet property="lvlLabel" destination="jwK-lI-7fq" id="uYe-6J-1fY"/>
+                        <outlet property="nameLabel" destination="iR5-1D-723" id="vJV-go-L33"/>
+                        <outlet property="pictureView" destination="B0j-Mw-Jsv" id="1QO-NK-aqh"/>
+                        <outlet property="professionLabel" destination="0w7-4d-v7x" id="cgf-KU-0gc"/>
+                        <outlet property="questView" destination="QTF-w8-hOz" id="h7v-9l-DZJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FdH-de-dXW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -311,21 +318,21 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="13K-X9-6qC">
-                                <rect key="frame" x="50" y="456" width="122.5" height="30"/>
+                                <rect key="frame" x="50" y="455" width="122.5" height="30"/>
                                 <color key="backgroundColor" red="0.4393215674" green="0.4393215674" blue="0.4393215674" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Cancel">
                                     <color key="titleColor" red="0.97576948279999998" green="0.97429806919999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0VI-3X-6P8">
-                                <rect key="frame" x="202.5" y="456" width="122.5" height="30"/>
+                                <rect key="frame" x="202.5" y="455" width="122.5" height="30"/>
                                 <color key="backgroundColor" red="0.4393215674" green="0.4393215674" blue="0.4393215674" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Save">
                                     <color key="titleColor" red="0.97576948279999998" green="0.97429806919999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dVx-HF-4ki">
-                                <rect key="frame" x="50" y="275.5" width="275" height="150"/>
+                                <rect key="frame" x="50" y="275" width="275" height="150"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="8Zm-Gj-tiU"/>
@@ -365,19 +372,19 @@
                                 </connections>
                             </collectionView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Class" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="L2T-Nt-Jn4">
-                                <rect key="frame" x="110" y="135" width="215" height="30"/>
+                                <rect key="frame" x="110" y="134.5" width="215" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Class:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oz4-Xa-NeM">
-                                <rect key="frame" x="50" y="140" width="46.5" height="20.5"/>
+                                <rect key="frame" x="50" y="139" width="46.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Appearance:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sJ3-zA-bcw">
-                                <rect key="frame" x="50" y="235" width="97.5" height="20.5"/>
+                                <rect key="frame" x="50" y="234.5" width="97.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
