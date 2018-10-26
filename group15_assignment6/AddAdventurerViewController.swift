@@ -27,6 +27,10 @@ class AddAdventurerViewController: UIViewController, UITextFieldDelegate, UIColl
         self.adventurerName.delegate = self
         adventurerName.text = nil
         adventurerName.placeholder = "Enter name"
+        
+        self.adventurerClass.delegate = self
+        adventurerClass.text = nil
+        adventurerClass.placeholder = "Enter profession"
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,22 +38,30 @@ class AddAdventurerViewController: UIViewController, UITextFieldDelegate, UIColl
         // Dispose of any resources that can be recreated.
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        hideKeyboard()
+        return true
+    }
     
     @IBAction func saveAdventurer(_ sender: Any) {
         hideKeyboard()
         let nameInput: String? = self.adventurerName.text
-        self.save(name: nameInput!)
+        let classInput: String? = self.adventurerClass.text
         
-        if adventurerName.text == "" {
+        if nameInput == "" {
             let alert = UIAlertController(title: "Incomplete Submission.", message: "Please fill in a name.", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
         
-        if adventurerClass.text == "" {
+        else if classInput == "" {
             let alert = UIAlertController(title: "Incomplete Submission.", message: "Please fill in a class.", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
+        }
+        
+        else {
+            save(name: nameInput!, profession: classInput!)
         }
     }
     
@@ -102,42 +114,47 @@ class AddAdventurerViewController: UIViewController, UITextFieldDelegate, UIColl
         adventurerClass.resignFirstResponder()
     }
     
-    func save(name: String) {
-        
-        guard let appDelegate =
-            UIApplication.shared.delegate as? AppDelegate else {
-                return
-        }
-        
-        let managedContext =
-            appDelegate.persistentContainer.viewContext
-        
-        let entity =
-            NSEntityDescription.entity(forEntityName: "Adventurer",
-                                       in: managedContext)!
-        
-        let person = NSManagedObject(entity: entity,
-                                     insertInto: managedContext)
-        
-        person.setValue(name, forKey: "name")
-        person.setValue("class", forKey: "class")
-        person.setValue("man2", forKey: "portrait")
-        person.setValue(2, forKey: "level")
-        person.setValue(10, forKey: "totalHP")
-        person.setValue(5, forKey: "currentHP")
-        person.setValue(5, forKey: "atkMod")
-        person.setValue(6, forKey: "defMod")
-        person.setValue(7, forKey: "spdMod")
-        
-        // 4
-        do {
-            try managedContext.save()
-            //adventurers.append(person)
-        } catch let error as NSError {
-            print("Could not save. \(error), \(error.userInfo)")
-        }
-    }
 
     
 
 }
+
+
+
+func save(name: String, profession: String) {
+    
+    guard let appDelegate =
+        UIApplication.shared.delegate as? AppDelegate else {
+            return
+    }
+    
+    let managedContext =
+        appDelegate.persistentContainer.viewContext
+    
+    let entity =
+        NSEntityDescription.entity(forEntityName: "Adventurer",
+                                   in: managedContext)!
+    
+    let person = NSManagedObject(entity: entity,
+                                 insertInto: managedContext)
+    
+    person.setValue(name, forKey: "name")
+    person.setValue(profession, forKey: "profession")
+    person.setValue("man2", forKey: "portrait")
+    person.setValue(1, forKey: "level")
+    person.setValue(10, forKey: "totalHP")
+    person.setValue(5, forKey: "currentHP")
+    person.setValue(5, forKey: "atkMod")
+    person.setValue(6, forKey: "defMod")
+    person.setValue(7, forKey: "spdMod")
+    
+    // 4
+    do {
+        try managedContext.save()
+        adventurers.append(person)
+    } catch let error as NSError {
+        print("Could not save. \(error), \(error.userInfo)")
+    }
+}
+
+

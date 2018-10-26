@@ -46,7 +46,7 @@ class QuestViewController: UIViewController {
     
     
     @objc func startQuest(){
-        questView.text += "\nTurn"
+        questView.text = questView.text! + "\nTurn"
     }
 
     @IBAction func endQuestButton(_ sender: UIButton) {

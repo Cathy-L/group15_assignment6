@@ -340,6 +340,7 @@
                                 </state>
                                 <connections>
                                     <action selector="saveAdventurer:" destination="SzE-z1-8Zc" eventType="touchUpInside" id="R6c-5U-Flh"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="n8F-sp-5ys"/>
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dVx-HF-4ki">
