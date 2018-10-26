@@ -9,11 +9,11 @@
 import UIKit
 import CoreData
 
+var adventurers: [NSManagedObject] = []
+
 class ViewController: UIViewController, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
-    
-    var adventurers: [NSManagedObject] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()

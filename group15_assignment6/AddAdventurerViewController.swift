@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import CoreData
+
 
 var images: [UIImage] = [UIImage(named: "man1")!, UIImage(named: "man2")!, UIImage(named: "man3")!, UIImage(named: "woman1")!, UIImage(named: "woman2")!, UIImage(named: "woman3")!]
 
-class AddAdventurerViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class AddAdventurerViewController: UIViewController, UITextFieldDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
     
     @IBOutlet weak var adventurerName: UITextField!
     @IBOutlet weak var adventurerClass: UITextField!
@@ -21,6 +23,10 @@ class AddAdventurerViewController: UIViewController, UICollectionViewDataSource,
         super.viewDidLoad()
 
         title = "Add an Adventurer"
+        
+        self.adventurerName.delegate = self
+        adventurerName.text = nil
+        adventurerName.placeholder = "Enter name"
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,6 +36,10 @@ class AddAdventurerViewController: UIViewController, UICollectionViewDataSource,
     
     
     @IBAction func saveAdventurer(_ sender: Any) {
+        hideKeyboard()
+        let nameInput: String? = self.adventurerName.text
+        self.save(name: nameInput!)
+        
         if adventurerName.text == "" {
             let alert = UIAlertController(title: "Incomplete Submission.", message: "Please fill in a name.", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
@@ -86,6 +96,40 @@ class AddAdventurerViewController: UIViewController, UICollectionViewDataSource,
         let cell = collectionView.cellForItem(at: indexPath)
         cell?.backgroundColor = UIColor.clear
     }
+    
+    func hideKeyboard() {
+        adventurerName.resignFirstResponder()
+        adventurerClass.resignFirstResponder()
+    }
+    
+    func save(name: String) {
+        
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return
+        }
+        
+        let managedContext =
+            appDelegate.persistentContainer.viewContext
+        
+        let entity =
+            NSEntityDescription.entity(forEntityName: "Adventurer",
+                                       in: managedContext)!
+        
+        let person = NSManagedObject(entity: entity,
+                                     insertInto: managedContext)
+        
+        person.setValue(name, forKeyPath: "name")
+        
+        // 4
+        do {
+            try managedContext.save()
+            adventurers.append(person)
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
+
     
 
 }
