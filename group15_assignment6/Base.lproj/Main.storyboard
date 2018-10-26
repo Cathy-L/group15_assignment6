@@ -320,7 +320,7 @@
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bdu-TI-wtu">
                                 <rect key="frame" x="110" y="45.5" width="215" height="30"/>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="13K-X9-6qC">
                                 <rect key="frame" x="50" y="411" width="122.5" height="30"/>
@@ -329,7 +329,7 @@
                                     <color key="titleColor" red="0.97576948279999998" green="0.97429806919999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="31o-GX-X0p"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="cancelSegue" id="31o-GX-X0p"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0VI-3X-6P8">
@@ -340,7 +340,7 @@
                                 </state>
                                 <connections>
                                     <action selector="saveAdventurer:" destination="SzE-z1-8Zc" eventType="touchUpInside" id="R6c-5U-Flh"/>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="n8F-sp-5ys"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="saveSegue" id="n8F-sp-5ys"/>
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dVx-HF-4ki">
@@ -387,7 +387,7 @@
                                 <rect key="frame" x="110" y="90.5" width="215" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Class:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oz4-Xa-NeM">
                                 <rect key="frame" x="50" y="95" width="46.5" height="20.5"/>

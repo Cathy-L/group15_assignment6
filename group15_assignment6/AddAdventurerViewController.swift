@@ -9,7 +9,6 @@
 import UIKit
 import CoreData
 
-
 var images: [UIImage] = [UIImage(named: "man1")!, UIImage(named: "man2")!, UIImage(named: "man3")!, UIImage(named: "woman1")!, UIImage(named: "woman2")!, UIImage(named: "woman3")!]
 
 class AddAdventurerViewController: UIViewController, UITextFieldDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
@@ -38,49 +37,63 @@ class AddAdventurerViewController: UIViewController, UITextFieldDelegate, UIColl
         // Dispose of any resources that can be recreated.
     }
     
+    // KEYBOARD HIDING
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         hideKeyboard()
         return true
     }
+    func hideKeyboard() {
+        adventurerName.resignFirstResponder()
+        adventurerClass.resignFirstResponder()
+    }
     
+    // PREVENTS SEGUE WHEN NO TEXT IN TEXTFIELDS
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if identifier == "saveSegue" {
+            if (adventurerName.text!.isEmpty) {
+                let alert = UIAlertController(title: "Incomplete Submission.", message: "Please fill in a name.", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                
+                return false
+            }
+            else if (adventurerClass.text!.isEmpty) {
+                let alert = UIAlertController(title: "Incomplete Submission.", message: "Please fill in a class.", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                
+                return false
+            }
+            else {
+                return true
+            }
+        }
+        
+        return true
+    }
+    
+    
+    // BUTTONS
     @IBAction func saveAdventurer(_ sender: Any) {
         hideKeyboard()
         let nameInput: String? = self.adventurerName.text
         let classInput: String? = self.adventurerClass.text
         
-        if nameInput == "" {
-            let alert = UIAlertController(title: "Incomplete Submission.", message: "Please fill in a name.", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+        if nameInput == "" || classInput == "" {
+            print("Error: Missing text field entry.")
         }
-        
-        else if classInput == "" {
-            let alert = UIAlertController(title: "Incomplete Submission.", message: "Please fill in a class.", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-        }
-        
         else {
             save(name: nameInput!, profession: classInput!)
         }
     }
     
     @IBOutlet weak var cancelAdventurer: NSLayoutConstraint!
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-     
-    */
     
+    
+    // COLLECTION VIEW
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return images.count
     }
-    
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
@@ -109,17 +122,12 @@ class AddAdventurerViewController: UIViewController, UITextFieldDelegate, UIColl
         cell?.backgroundColor = UIColor.clear
     }
     
-    func hideKeyboard() {
-        adventurerName.resignFirstResponder()
-        adventurerClass.resignFirstResponder()
-    }
-    
-
-    
 
 }
 
 
+
+// SAVE BUTTON FUNCTION (outside view controller class)
 
 func save(name: String, profession: String) {
     
