@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -23,7 +23,36 @@ class ViewController: UIViewController {
                            forCellReuseIdentifier: "Cell")
         
     }
-    
+    /*
+    func saveAdventurer(name: String, profession: String, picture: UIImage) {
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let managedContext = appDelegate.managedContext
+        let entity =  NSEntityDescription.entityForName("Adventurer", inManagedObjectContext:managedContext)
+        let adventurer = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
+        let datapicture: NSData = UIImagePNGRepresentation(picture)! as NSData
+        
+        let level: Int = 1
+        let attack: Float = Float(arc4random_uniform(1000))/100
+        let health: Int = Int(arc4random_uniform(50) + 50)
+        
+        adventurer.setValue(name, forKey: "name")
+        adventurer.setValue(profession, forKey: "profession")
+        adventurer.setValue(level, forKey: "level")
+        adventurer.setValue(attack, forKey: "attack")
+        adventurer.setValue(health, forKey: "health")
+        adventurer.setValue(datapicture, forKey: "picture")
+        
+        do {
+            try managedContext.save()
+            adventurers.append(adventurer)
+        }
+            
+        catch let error as NSError  {
+            print("Could not save \(error), \(error.userInfo)")
+        }
+    }
+    */
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -38,8 +67,7 @@ class ViewController: UIViewController {
         let fetchRequest =
             NSFetchRequest<NSManagedObject>(entityName: "Adventurer")
         
-        // START TEST ADVENTURER CODE
-/*
+
         let entity = NSEntityDescription.entity(forEntityName: "Adventurer", in: managedContext)
         let newUser = NSManagedObject(entity: entity!, insertInto: managedContext)
         newUser.setValue("Qwee", forKey: "name")
@@ -51,8 +79,7 @@ class ViewController: UIViewController {
         newUser.setValue(5, forKey: "atkMod")
         newUser.setValue(6, forKey: "defMod")
         newUser.setValue(7, forKey: "spdMod")
- */
-        // END TEST ADVENTURER CODE
+
         
         do {
             adventurers = try managedContext.fetch(fetchRequest)
@@ -63,6 +90,7 @@ class ViewController: UIViewController {
 
 
     @IBAction func addMember(_ sender: UIBarButtonItem) {
+        self.performSegue(withIdentifier: "addMember", sender: self)
     }
     
     override func didReceiveMemoryWarning() {
