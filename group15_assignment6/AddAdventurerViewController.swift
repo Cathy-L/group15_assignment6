@@ -119,12 +119,20 @@ class AddAdventurerViewController: UIViewController, UITextFieldDelegate, UIColl
         let person = NSManagedObject(entity: entity,
                                      insertInto: managedContext)
         
-        person.setValue(name, forKeyPath: "name")
+        person.setValue(name, forKey: "name")
+        person.setValue("class", forKey: "class")
+        person.setValue("man2", forKey: "portrait")
+        person.setValue(2, forKey: "level")
+        person.setValue(10, forKey: "totalHP")
+        person.setValue(5, forKey: "currentHP")
+        person.setValue(5, forKey: "atkMod")
+        person.setValue(6, forKey: "defMod")
+        person.setValue(7, forKey: "spdMod")
         
         // 4
         do {
             try managedContext.save()
-            adventurers.append(person)
+            //adventurers.append(person)
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
         }
