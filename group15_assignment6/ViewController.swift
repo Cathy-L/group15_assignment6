@@ -39,7 +39,7 @@ class ViewController: UIViewController {
             NSFetchRequest<NSManagedObject>(entityName: "Adventurer")
         
         // START TEST ADVENTURER CODE
-/*
+
         let entity = NSEntityDescription.entity(forEntityName: "Adventurer", in: managedContext)
         let newUser = NSManagedObject(entity: entity!, insertInto: managedContext)
         newUser.setValue("Qwee", forKey: "name")
@@ -51,7 +51,7 @@ class ViewController: UIViewController {
         newUser.setValue(5, forKey: "atkMod")
         newUser.setValue(6, forKey: "defMod")
         newUser.setValue(7, forKey: "spdMod")
- */
+ 
         // END TEST ADVENTURER CODE
         
         do {
