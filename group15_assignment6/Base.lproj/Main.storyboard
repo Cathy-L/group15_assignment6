@@ -253,6 +253,9 @@
                                 <state key="normal" title="End Quest">
                                     <color key="titleColor" red="0.97576948279999998" green="0.97429806919999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="endQuestButton:" destination="I5e-Js-bQS" eventType="touchUpInside" id="TdD-kd-61X"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
