@@ -9,11 +9,11 @@
 import UIKit
 import CoreData
 
+var adventurers: [NSManagedObject] = []
+
 class ViewController: UIViewController, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
-    
-    var adventurers: [NSManagedObject] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,7 +67,7 @@ class ViewController: UIViewController, UITableViewDelegate {
         let fetchRequest =
             NSFetchRequest<NSManagedObject>(entityName: "Adventurer")
         
-
+/*
         let entity = NSEntityDescription.entity(forEntityName: "Adventurer", in: managedContext)
         let newUser = NSManagedObject(entity: entity!, insertInto: managedContext)
         newUser.setValue("Qwee", forKey: "name")
@@ -79,7 +79,7 @@ class ViewController: UIViewController, UITableViewDelegate {
         newUser.setValue(5, forKey: "atkMod")
         newUser.setValue(6, forKey: "defMod")
         newUser.setValue(7, forKey: "spdMod")
-
+*/
         
         do {
             adventurers = try managedContext.fetch(fetchRequest)
@@ -96,7 +96,6 @@ class ViewController: UIViewController, UITableViewDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
 
 }
 

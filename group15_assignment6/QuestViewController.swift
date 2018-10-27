@@ -19,12 +19,40 @@ class QuestViewController: UIViewController {
     
     @IBOutlet weak var questView: UITextView!
     
-        
+    var name: String?
+    var timer = Timer()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        //These following fields need to access info from core data
+        let img = "man1"
+        pictureView?.image = UIImage(named: img)
+        //let name = "Change this"
+        nameLabel.text = name
+        let level = "Level 1"
+        lvlLabel.text = level
+        let profession = "Change this"
+        professionLabel.text = profession
+        let attack = "Nope"
+        attackLabel.text = attack
+        let hp = "Nope"
+        hpLabel.text = hp
+        //End of stuff that needs to be connected
+        
+        questView.text = "Quest Started:"
+        timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(startQuest), userInfo: nil, repeats: true)
     }
+    
+    
+    @objc func startQuest(){
+        questView.text = questView.text! + "\nTurn"
+    }
+
+    @IBAction func endQuestButton(_ sender: UIButton) {
+        timer.invalidate()
+    }
+    
     
 
     /*

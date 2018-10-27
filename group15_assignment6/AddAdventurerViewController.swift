@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import CoreData
 
 var images: [UIImage] = [UIImage(named: "man1")!, UIImage(named: "man2")!, UIImage(named: "man3")!, UIImage(named: "woman1")!, UIImage(named: "woman2")!, UIImage(named: "woman3")!]
 
-class AddAdventurerViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class AddAdventurerViewController: UIViewController, UITextFieldDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
     
     @IBOutlet weak var adventurerName: UITextField!
     @IBOutlet weak var adventurerClass: UITextField!
@@ -21,6 +22,14 @@ class AddAdventurerViewController: UIViewController, UICollectionViewDataSource,
         super.viewDidLoad()
 
         title = "Add an Adventurer"
+        
+        self.adventurerName.delegate = self
+        adventurerName.text = nil
+        adventurerName.placeholder = "Enter name"
+        
+        self.adventurerClass.delegate = self
+        adventurerClass.text = nil
+        adventurerClass.placeholder = "Enter profession"
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,37 +37,63 @@ class AddAdventurerViewController: UIViewController, UICollectionViewDataSource,
         // Dispose of any resources that can be recreated.
     }
     
+    // KEYBOARD HIDING
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        hideKeyboard()
+        return true
+    }
+    func hideKeyboard() {
+        adventurerName.resignFirstResponder()
+        adventurerClass.resignFirstResponder()
+    }
     
-    @IBAction func saveAdventurer(_ sender: Any) {
-        if adventurerName.text == "" {
-            let alert = UIAlertController(title: "Incomplete Submission.", message: "Please fill in a name.", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+    // PREVENTS SEGUE WHEN NO TEXT IN TEXTFIELDS
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if identifier == "saveSegue" {
+            if (adventurerName.text!.isEmpty) {
+                let alert = UIAlertController(title: "Incomplete Submission.", message: "Please fill in a name.", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                
+                return false
+            }
+            else if (adventurerClass.text!.isEmpty) {
+                let alert = UIAlertController(title: "Incomplete Submission.", message: "Please fill in a class.", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                
+                return false
+            }
+            else {
+                return true
+            }
         }
         
-        if adventurerClass.text == "" {
-            let alert = UIAlertController(title: "Incomplete Submission.", message: "Please fill in a class.", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+        return true
+    }
+    
+    
+    // BUTTONS
+    @IBAction func saveAdventurer(_ sender: Any) {
+        hideKeyboard()
+        let nameInput: String? = self.adventurerName.text
+        let classInput: String? = self.adventurerClass.text
+        
+        if nameInput == "" || classInput == "" {
+            print("Error: Missing text field entry.")
+        }
+        else {
+            save(name: nameInput!, profession: classInput!)
         }
     }
     
     @IBOutlet weak var cancelAdventurer: NSLayoutConstraint!
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-     
-    */
     
+    
+    // COLLECTION VIEW
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return images.count
     }
-    
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
@@ -89,3 +124,45 @@ class AddAdventurerViewController: UIViewController, UICollectionViewDataSource,
     
 
 }
+
+
+
+// SAVE BUTTON FUNCTION (outside view controller class)
+
+func save(name: String, profession: String) {
+    
+    guard let appDelegate =
+        UIApplication.shared.delegate as? AppDelegate else {
+            return
+    }
+    
+    let managedContext =
+        appDelegate.persistentContainer.viewContext
+    
+    let entity =
+        NSEntityDescription.entity(forEntityName: "Adventurer",
+                                   in: managedContext)!
+    
+    let person = NSManagedObject(entity: entity,
+                                 insertInto: managedContext)
+    
+    person.setValue(name, forKey: "name")
+    person.setValue(profession, forKey: "profession")
+    person.setValue("man2", forKey: "portrait")
+    person.setValue(1, forKey: "level")
+    person.setValue(10, forKey: "totalHP")
+    person.setValue(5, forKey: "currentHP")
+    person.setValue(5, forKey: "atkMod")
+    person.setValue(6, forKey: "defMod")
+    person.setValue(7, forKey: "spdMod")
+    
+    // 4
+    do {
+        try managedContext.save()
+        adventurers.append(person)
+    } catch let error as NSError {
+        print("Could not save. \(error), \(error.userInfo)")
+    }
+}
+
+
