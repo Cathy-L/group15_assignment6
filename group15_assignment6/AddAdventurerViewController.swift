@@ -79,12 +79,14 @@ class AddAdventurerViewController: UIViewController, UITextFieldDelegate, UIColl
         let nameInput: String? = self.adventurerName.text
         let classInput: String? = self.adventurerClass.text
         
+        // let cell = collectionView.cellForItem(at: indexPath) as? CollectionViewCell
+        
         
         if nameInput == "" || classInput == "" {
             print("Error: Missing text field entry.")
         }
         else {
-            save(name: nameInput!, profession: classInput!)
+            save(name: nameInput!, profession: classInput!/*,  picture: cell */)
         }
     }
     
