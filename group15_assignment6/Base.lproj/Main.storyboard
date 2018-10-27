@@ -458,6 +458,7 @@
         <image name="woman1" width="179" height="282"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="hBK-uZ-VG3"/>
         <segue reference="31o-GX-X0p"/>
     </inferredMetricsTieBreakers>
 </document>
