@@ -23,36 +23,7 @@ class ViewController: UIViewController, UITableViewDelegate {
                            forCellReuseIdentifier: "Cell")
         
     }
-    /*
-    func saveAdventurer(name: String, profession: String, picture: UIImage) {
-        
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let managedContext = appDelegate.managedContext
-        let entity =  NSEntityDescription.entityForName("Adventurer", inManagedObjectContext:managedContext)
-        let adventurer = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
-        let datapicture: NSData = UIImagePNGRepresentation(picture)! as NSData
-        
-        let level: Int = 1
-        let attack: Float = Float(arc4random_uniform(1000))/100
-        let health: Int = Int(arc4random_uniform(50) + 50)
-        
-        adventurer.setValue(name, forKey: "name")
-        adventurer.setValue(profession, forKey: "profession")
-        adventurer.setValue(level, forKey: "level")
-        adventurer.setValue(attack, forKey: "attack")
-        adventurer.setValue(health, forKey: "health")
-        adventurer.setValue(datapicture, forKey: "picture")
-        
-        do {
-            try managedContext.save()
-            adventurers.append(adventurer)
-        }
-            
-        catch let error as NSError  {
-            print("Could not save \(error), \(error.userInfo)")
-        }
-    }
-    */
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         

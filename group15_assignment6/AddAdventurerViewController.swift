@@ -100,30 +100,19 @@ class AddAdventurerViewController: UIViewController, UITextFieldDelegate, UIColl
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionViewCell", for: indexPath) as! CollectionViewCell
         cell.image.image = images[indexPath.row]
         
-        if cell.isSelected {
-            cell.backgroundColor = UIColor.lightGray
-        }
-            
-        else {
-            cell.backgroundColor = UIColor.clear
-        }
+        cell.image?.image =  images[(indexPath as NSIndexPath).row]
+        cell.layer.borderColor = UIColor.white.cgColor
+        cell.layer.borderWidth = 3
         
         return cell
         
     }
+        
+        
     
-    private func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath as IndexPath)
-        cell?.backgroundColor = UIColor.lightGray
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath)
-        cell?.backgroundColor = UIColor.clear
-    }
     
 
-}
+
 
 
 
@@ -146,15 +135,23 @@ func save(name: String, profession: String) {
     let person = NSManagedObject(entity: entity,
                                  insertInto: managedContext)
     
+    
+    
+    let level: Int = 1
+    let attack: Float = Float(arc4random_uniform(1000))/100
+    let hp: Int = Int(arc4random_uniform(50) + 50)
+    let def: Int = Int(arc4random_uniform(30) + 1)
+    let spd: Int = Int(arc4random_uniform(30) + 1)
+    
     person.setValue(name, forKey: "name")
     person.setValue(profession, forKey: "profession")
-    person.setValue("man2", forKey: "portrait")
-    person.setValue(1, forKey: "level")
-    person.setValue(10, forKey: "totalHP")
-    person.setValue(5, forKey: "currentHP")
-    person.setValue(5, forKey: "atkMod")
-    person.setValue(6, forKey: "defMod")
-    person.setValue(7, forKey: "spdMod")
+    person.setValue("man1", forKey: "portrait")
+    person.setValue(level, forKey: "level")
+    person.setValue(hp, forKey: "totalHP")
+    person.setValue(attack, forKey: "atkMod")
+    person.setValue(hp, forKey: "currentHP")
+    person.setValue(def, forKey: "defMod")
+    person.setValue(spd, forKey: "spdMod")
     
     // 4
     do {
@@ -165,4 +162,5 @@ func save(name: String, profession: String) {
     }
 }
 
+}
 
