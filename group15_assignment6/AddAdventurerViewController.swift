@@ -72,12 +72,13 @@ class AddAdventurerViewController: UIViewController, UITextFieldDelegate, UIColl
         return true
     }
     
-    
+    // I think this is where th selected item in the cell should come to. I was also having trouble with the fct that the portrait type is a string. I saw some ways of using a binary object, but that was used with segues. I think I'm running into trouble because I am not fully understanding how this save function interacts with the collectionView.
     // BUTTONS
     @IBAction func saveAdventurer(_ sender: Any) {
         hideKeyboard()
         let nameInput: String? = self.adventurerName.text
         let classInput: String? = self.adventurerClass.text
+        
         
         if nameInput == "" || classInput == "" {
             print("Error: Missing text field entry.")
@@ -95,30 +96,37 @@ class AddAdventurerViewController: UIViewController, UITextFieldDelegate, UIColl
         return images.count
     }
     
+    // this piece of code should select the image and change the background color
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionViewCell", for: indexPath) as! CollectionViewCell
         cell.image.image = images[indexPath.row]
         
-        cell.image?.image =  images[(indexPath as NSIndexPath).row]
-        cell.layer.borderColor = UIColor.white.cgColor
-        cell.layer.borderWidth = 3
+        if cell.isSelected {
+            cell.backgroundColor = UIColor.lightGray
+        }else{
+            cell.backgroundColor = UIColor.clear
+        }
         
         return cell
         
     }
-        
+    
+    // these two functions determine whether or not the cell items have been selected
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as? CollectionViewCell
+        cell?.backgroundColor = UIColor.lightGray
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as? CollectionViewCell
+        cell?.backgroundColor = UIColor.clear
+    }
         
     
-    
-
-
-
-
-
 // SAVE BUTTON FUNCTION (outside view controller class)
 
-func save(name: String, profession: String) {
+    func save(name: String, profession: String) {
     
     guard let appDelegate =
         UIApplication.shared.delegate as? AppDelegate else {
