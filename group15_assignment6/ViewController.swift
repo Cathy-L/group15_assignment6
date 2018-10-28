@@ -10,10 +10,12 @@ import UIKit
 import CoreData
 
 var adventurers: [NSManagedObject] = []
+var selectedAdventurer:NSManagedObject?
 
 class ViewController: UIViewController, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
+    var selectedAdventurer:NSManagedObject?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +25,8 @@ class ViewController: UIViewController, UITableViewDelegate {
                            forCellReuseIdentifier: "Cell")
         
     }
+    
+ 
     /*
     func saveAdventurer(name: String, profession: String, picture: UIImage) {
         
@@ -53,6 +57,9 @@ class ViewController: UIViewController, UITableViewDelegate {
         }
     }
     */
+    
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -87,17 +94,19 @@ class ViewController: UIViewController, UITableViewDelegate {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
     }
+    
 
-
+    
     @IBAction func addMember(_ sender: UIBarButtonItem) {
         self.performSegue(withIdentifier: "addMember", sender: self)
     }
-    
+ 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
 
 }
+
 
 // MARK: - UITableViewDataSource
 extension ViewController: UITableViewDataSource {
@@ -169,4 +178,20 @@ extension ViewController: UITableViewDataSource {
         
     }
     
+    override func prepare(for segue:UIStoryboardSegue, sender: Any?){
+        
+        if segue.destination is QuestViewController {
+            let contentViewController = segue.destination as! QuestViewController
+        
+            if let selectedCell = sender as? AdventurerTableViewCell{
+                let indexPath = tableView.indexPath(for: selectedCell)
+                let adventurer = adventurers[indexPath!.row]
+                contentViewController.selectedAdventurer = adventurer
+            }
+        }
+        
+        
+    }
+
 }
+
